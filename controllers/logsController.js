@@ -14,4 +14,10 @@ logs.get("/:id", (req, res) => {
   res.redirect("/error");
 });
 
+logs.post("/", (req, res) => {
+  const newLog = req.body;
+  logsArray.push(newLog);
+  res.status(202).send(logsArray);
+});
+
 module.exports = logs;
