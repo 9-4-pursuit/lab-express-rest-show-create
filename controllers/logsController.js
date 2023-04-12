@@ -9,7 +9,7 @@ logs.get("/", (req, res) => {
   if (!order && !mistakes && !lastCrisis) {
     res.status(202).json(logsArray);
   } else {
-    const logsArrayCopy = [...logsArray];
+    let logsArrayCopy = [...logsArray];
 
     //sort ascending
     if (order === "asc") {
@@ -24,7 +24,6 @@ logs.get("/", (req, res) => {
         }
         return 0;
       })
-      res.json(logsArrayCopy);
     }
 
     //sort descending
@@ -40,10 +39,19 @@ logs.get("/", (req, res) => {
         }
         return 0;
       })
-      res.json(logsArrayCopy);
     }
 
+    if (mistakes === "true" || mistakes === "false") {
+      const mistakesBoolean = mistakes === "true";
 
+      logsArrayCopy = logsArrayCopy.filter((log) => {
+        return log.mistakesWereMadeToday === mistakesBoolean;
+      });
+    }
+
+    
+
+    res.json(logsArrayCopy);
   }
 });
 
