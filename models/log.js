@@ -48,4 +48,8 @@ module.exports = [
       mistakesWereMadeToday: true,
       daysSinceLastCrisis: 0,
     },
+    // {
+    //   captainName: "captain"
+    //   title: 
+    // }
   ];
