@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "start": "node server.js"
   },
   "keywords": [],
@@ -14,5 +14,10 @@
     "@types/jest": "^26.0.23",
     "jest": "^27.0.4",
     "supertest": "^6.1.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
   }
 }
