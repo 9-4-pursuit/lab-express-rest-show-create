@@ -14,7 +14,7 @@ logs.get('/:id', (req, res) => {
     if (log) {
         res.status(202).json(logsArray[id])
     } else {
-        res.status(404).send(`We do not have this log in our records. <a href='/logs'>Please browse our logs again.</a>`)
+        res.redirect()
     }
 })
 
