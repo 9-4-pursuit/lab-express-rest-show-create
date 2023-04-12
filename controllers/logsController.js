@@ -49,7 +49,6 @@ logs.get("/", (req, res) => {
       });
     }
 
-    
 
     res.json(logsArrayCopy);
   }
@@ -65,8 +64,24 @@ logs.get("/:id", (req, res) => {
 
 logs.post("/", (req, res) => {
   const newLog = req.body;
+
   logsArray.push(newLog);
   res.status(202).send(logsArray);
+});
+
+
+
+logs.delete("/:id", (req, res) => {
+  const {id} = req.params;
+
+  if (logsArray[id]) {
+    const deletedLog = logsArray.splice(id,1);
+
+    res.status(202).json(deletedLog);
+  } else {
+    res.redirect("/error");
+  }
+  
 });
 
 module.exports = logs;
