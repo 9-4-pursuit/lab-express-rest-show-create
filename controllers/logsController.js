@@ -62,14 +62,26 @@ logs.get("/:id", (req, res) => {
   res.redirect("/error");
 });
 
-logs.post("/", (req, res) => {
+//check if the correct datatypes are entered in each field
+const validateData = (req, res, next) => {
+  if ((typeof req.body.captainName) !== "string" ||
+  (typeof req.body.title) !== "string" || 
+  (typeof req.body.post) !== "string" ||
+  (typeof req.body.mistakesWereMadeToday) !== "boolean" ||
+  (typeof req.body.daysSinceLastCrisis) !== "number") {
+    res.status(400).send("Incorrect value type entered.");
+  }
+  next();
+}
+
+logs.post("/", validateData, (req, res) => {
   const newLog = req.body;
 
   logsArray.push(newLog);
   res.status(202).send(logsArray);
 });
 
-logs.put("/:id", (req, res) => {
+logs.put("/:id", validateData,(req, res) => {
   const {id} = req.params;
   const updatedLog = req.body;
 
