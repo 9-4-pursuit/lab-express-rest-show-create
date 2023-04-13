@@ -69,7 +69,17 @@ logs.post("/", (req, res) => {
   res.status(202).send(logsArray);
 });
 
+logs.put("/:id", (req, res) => {
+  const {id} = req.params;
+  const updatedLog = req.body;
 
+  if (logsArray[id]) {
+    logsArray[id] = updatedLog;
+    res.status(200).send(logsArray);
+  } else {
+    res.redirect("/error");
+  }
+})
 
 logs.delete("/:id", (req, res) => {
   const {id} = req.params;
@@ -81,7 +91,6 @@ logs.delete("/:id", (req, res) => {
   } else {
     res.redirect("/error");
   }
-  
 });
 
 module.exports = logs;
