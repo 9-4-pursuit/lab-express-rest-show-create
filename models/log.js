@@ -56,4 +56,18 @@ module.exports = [
     mistakesWereMadeToday: true,
     daysSinceLastCrisis: 0,
   },
+  {
+    captainName: "Captain America",
+    title: "America",
+    post: "I'm with you til the end of the line",
+    mistakesWereMadeToday: true,
+    daysSinceLastCrisis: 0,
+  },
+  {
+    captainName: "Han Solo",
+    title: "Solo",
+    post: "Let's keep a little optimism here.",
+    mistakesWereMadeToday: true,
+    daysSinceLastCrisis: 0,
+  },
 ];
