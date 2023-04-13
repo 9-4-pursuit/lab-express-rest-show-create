@@ -15,6 +15,14 @@ logs.get("/", (req, res) => {
             if (x < y) { return -1 }
             return 0
         })
+    } else if (query.order === "desc") {
+        logsArr = logsArr.sort((a, b) => {
+            let x = a.captainName.toLocaleLowerCase()
+            let y = b.captainName.toLocaleLowerCase()
+            if (x > y) { return -1 }
+            if (x < y) { return 1 }
+            return 0
+        })
     }
     res.status(200).send(logsArr)
 })
