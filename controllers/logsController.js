@@ -14,7 +14,7 @@ logs.get('/:id', (req, res) => {
     if (log) {
         res.status(202).json(logsArray[id])
     } else {
-        res.redirect()
+        res.redirect('/invalid-index')
     }
 })
 
@@ -25,7 +25,7 @@ logs.post('/', (req, res) => {
         logsArray.push(newLog);
         res.status(202).json(logsArray);
     } else {
-        res.status(404).send('Please add a valid new log')
+        res.redirect('/invalid-new-log')
     }
 })
 
@@ -38,7 +38,7 @@ logs.put('/', (req, res) => {
         logsArray[id] = updatedLog;
         res.status(303).json(logsArray[id])
     } else {
-        res.status(404).json({success: false, error: `There was no log with the id of ${id}`})
+        res.redirect('/log-not-found')
     }
 })
 
@@ -50,7 +50,7 @@ logs.delete('/:id', (req, res) => {
         const deletedLog = logsArray.splice(id, 1)
         res.status(202).json(deletedLog)
     } else {
-        res.json({success: false, error: `There is no log at id ${id}`})
+        res.redirect('/log-not-found')
     }
 })
 
