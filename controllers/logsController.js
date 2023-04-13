@@ -5,7 +5,8 @@ const logsArray = require("../models/log.js");
 logs.get("/", (req, res) => {
   const {order, mistakes, lastCrisis} = req.query;
 
-  //
+  //for sorting and filtering
+  //still need to work on lastCrisis
   if (!order && !mistakes && !lastCrisis) {
     res.status(202).json(logsArray);
   } else {
@@ -50,7 +51,7 @@ logs.get("/", (req, res) => {
     }
 
 
-    res.json(logsArrayCopy);
+    res.status(202).json(logsArrayCopy);
   }
 });
 
