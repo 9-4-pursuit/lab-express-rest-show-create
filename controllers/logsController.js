@@ -21,4 +21,21 @@ logs.post("/", (req, res)=>{
     res.status(200).send(logsArr)
 })
 
+logs.delete("/:id", (req, res)=>{
+    const {id} = req.params
+    const deletedLog = logsArr.splice(id, 1)
+    logsArr[id] ? res.status(200).json({success: true, deletedLog}) : res.redirect("*")
+})
+
+logs.put("/:id", (req, res)=>{
+    const {id} = req.params
+    const updatedLog = req.body
+    if (logsArr[id]){
+        logsArr[id] = updatedLog
+        res.status(200).json(logsArr[id])
+    } else {
+        res.redirect("*")
+    }
+})
+
 module.exports = logs
