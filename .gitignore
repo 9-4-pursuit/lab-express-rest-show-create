@@ -102,3 +102,16 @@ dist
 
 # TernJS port file
 .tern-port
+
+# node modules
+node_modules
+
+# dotenv
+.env
+
+#DS Store
+.DS_Store
+
+
+
+
