@@ -11,9 +11,11 @@ logs.get("/:id", (req, res) => {
   const singleLog = logsArray[id];
 
   if (singleLog) {
-    res.status(202).json({ sucess: true, payload: logsArray[id] });
+    // res.status(202).json({ sucess: true, payload: logsArray[id] });
+    res.status(202).json(singleLog);
   } else {
-    res.status(404).send(`Log not found.<a href="/logs">Return to logs</a>`);
+    // res.status(404).send(`Log not found.<a href="/logs">Return to logs</a>`);
+    res.status(404).redirect("/logs");
   }
 });
 
