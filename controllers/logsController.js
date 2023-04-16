@@ -1,9 +1,22 @@
 const logs = require('express').Router();
 const logsArray = require('../models/logsModel.js');
+const logsFilter = require('./logsFilter.js');
 
 //GET: index
 logs.get('/', (req, res) => {
-  res.status(202).json(logsArray);
+  const query = req.query;
+
+  if (Object.keys(query).length > 0) {
+    //filter logs
+    const filtered = logsFilter(query, logsArray);
+    if (filtered.error) {
+      res.status(404).json(filtered);
+    } else {
+      res.status(202).json(filtered);
+    }
+  } else {
+    res.status(202).json(logsArray);
+  }
 })
 
 //GET: by id
