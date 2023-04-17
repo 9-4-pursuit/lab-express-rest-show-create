@@ -1,11 +1,15 @@
 const express = require('express');
 const app = express();
+const cors = require("cors");
 
 //controllers
 const logsController = require('./controllers/logsController.js');
 
-//routes
+//middleware
 app.use(express.json());
+app.use(cors());
+
+//routes
 app.use('/logs', logsController);
 
 app.get('/', (req, res) => {

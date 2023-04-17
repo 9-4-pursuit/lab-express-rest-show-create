@@ -40,11 +40,10 @@ logs.post('/', (req, res) => {
 logs.put('/:arrayIndex', (req, res) => {
   const { arrayIndex } = req.params;
   const updatedLog = req.body;
-  const theLog = logsArray[arrayIndex];
 
-  if (theLog) {
-    theLog = updatedLog;
-    res.status(202).json(theLog);
+  if (logsArray[arrayIndex]) {
+    logsArray[arrayIndex] = updatedLog;
+    res.status(202).json(updatedLog);
   } else{
     res.status(404).redirect('/logs');
   }
