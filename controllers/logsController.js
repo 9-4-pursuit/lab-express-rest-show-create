@@ -8,7 +8,6 @@ logs.post("/", (req, res) => {
     res.json(logsArray)
 })
 
-
 // index
 logs.get('/', (req, res) => {
     res.json(logsArray)
@@ -24,7 +23,6 @@ logs.get('/:id', (req, res) => {
         res.status(404).redirect("*")
     }
 })
-
 
 // Delete
 logs.delete('/:id', (req, res) => {
