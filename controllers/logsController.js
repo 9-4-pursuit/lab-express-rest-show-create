@@ -62,7 +62,7 @@ logs.post('/', jsonParser, (req, res) => {
   logsArray.push(newLog)
   res.status(202).json(logsArray)
 })
-logs.put('/:id/edit', jsonParser,(req,res)=>{
+logs.put('/edit/:id', jsonParser,(req,res)=>{
     if(logsArray[req.params.id]){
         logsArray[req.params.id] = req.body
         res.status(200).redirect('/logs')
