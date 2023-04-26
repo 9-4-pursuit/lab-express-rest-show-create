@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
-const logsController = require("./controllers/logsController")
+const cors = require("cors")
+const logger = require("morgan")
+const logsController = require("./controllers/logsController.js")
 
 app.use(express.json()) //parses incoming data
+app.use(cors())
+
+app.use(logger("dev"))
 
 app.use('/logs', logsController);
+
 
 
 app.get('/', (req, res) => {
