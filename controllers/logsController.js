@@ -2,7 +2,7 @@ const express = require('express');
 const logs = express.Router();
 const logsData = require('../models/log.js');
 
-logs.get('/', (request, response) => {
+logs.get('/', (_, response) => {
     response.status(202).json(logsData)
 })
 
